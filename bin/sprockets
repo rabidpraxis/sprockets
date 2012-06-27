@@ -11,8 +11,12 @@ unless ARGV.delete("--noenv")
   end
 end
 
+
+def environment
+  @@sprockets_env ||= Sprockets::Environment.new(Dir.pwd)
+end
+
 filenames = []
-environment = Sprockets::Environment.new(Dir.pwd)
 manifest = nil
 
 (ENV['SPROCKETS_PATH'] || "").split(File::PATH_SEPARATOR).each do |path|
